@@ -12,6 +12,88 @@ const matrix = [
     
 ];
 
+const matrix1 = [
+
+    [0, 0, 1],
+    [0, 0, 1],
+    [0, 1, 1],
+    
+];
+
+const matrix2 = [
+
+    [1, 1, 1, 1],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    
+];
+
+const matrix3 = [
+
+    [0, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0]
+    
+];
+
+const matrix4 = [
+
+    [1, 0, 0],
+    [1, 0, 0],
+    [1, 1, 0],
+    
+];
+
+const matrix5 = [
+
+    [0, 0, 1],
+    [0, 1, 1],
+    [0, 1, 0],
+    
+];
+
+const matrix6 = [
+
+    [1, 0, 0],
+    [1, 1, 0],
+    [0, 1, 0],
+    
+];
+
+const matrix7 = [
+
+    [0, 0, 0],
+    [0, 1, 1],
+    [1, 1, 0],
+    
+];
+
+const matrix8 = [
+
+    [0, 0, 0],
+    [1, 1, 0],
+    [0, 1, 1],
+    
+];
+
+const pieces = [matrix, matrix1, matrix2, matrix3, matrix4, matrix5, matrix6, matrix7, matrix8]
+const randomPieces =  pieces[Math.floor(Math.random() * pieces.length)]
+   console.log(randomPieces)
+   console.log(Math.floor(Math.random() * pieces.length + 1))
+
+const colors = [
+    null,
+    'purple',
+    'yellow',
+    'orange',
+    'blue',
+    'pink',
+    'green',
+    'red'
+  ];
+
+
 function collide(arena, player) {
     const[m, o] = [player.matrix, player.pos];
      for (let y = 0; y < m.length; ++y) {
@@ -65,9 +147,9 @@ function merge( arena, player) {
              arena[y + player.pos.y][x +player.pos.x] = value;
 
          }
-     })
+     });
 
-    })
+    });
 
     
 
@@ -77,7 +159,7 @@ function merge( arena, player) {
 }
 
  function playerDrop() {
-    player.pos.y++;
+    player.pos.y = 15.5;
      if (collide(arena, player)) {
          player.pos.y--;
          merge(arena, player);
@@ -120,7 +202,7 @@ const arena = createMatrix(12, 20)
 
 const player = {
     pos: {x: 5, y:5},
-    matrix: matrix
+    matrix: randomPieces
 }
 
 document.addEventListener('keydown', event => {
@@ -135,7 +217,7 @@ document.addEventListener('keydown', event => {
         
     }
     else if (event.keyCode === 40) {
-        player.pos.x ++;
+        
         playerDrop()
     }
 
