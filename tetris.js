@@ -83,7 +83,7 @@ const randomPieces =  pieces[Math.floor(Math.random() * pieces.length)]
    console.log(Math.floor(Math.random() * pieces.length + 1))
 
 const colors = [
-    null,
+    
     'purple',
     'yellow',
     'orange',
@@ -92,6 +92,9 @@ const colors = [
     'green',
     'red'
   ];
+
+  const randomColors = colors[Math.floor(Math.random() * colors.length)]
+  console.log(randomColors)
 
 
 function collide(arena, player) {
@@ -120,6 +123,8 @@ function createMatrix(w, h) {
 
 }
 
+
+
 function draw() {
     context.fillStyle = '#000';
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -132,7 +137,7 @@ function drawMatrix(matrix, offset) {
 matrix.forEach((row, y) => {
     row.forEach((value, x) => {
         if (value !== 0) {
-            context.fillStyle = 'blue';
+            context.fillStyle = randomColors;
             context.fillRect(x + offset.x, y + offset.y, 1, 1);
         }
     });
@@ -201,7 +206,7 @@ const arena = createMatrix(12, 20)
 
 
 const player = {
-    pos: {x: 5, y:5},
+    pos: {x: 0, y: 0},
     matrix: randomPieces
 }
 
