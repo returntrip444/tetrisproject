@@ -156,7 +156,7 @@ const colors = [
     'green',
     'red',
     "aqua",
-    "gold"
+    "silver"
   ];
 
 //   const randomColors = colors[Math.floor(Math.random() * colors.length)]
@@ -250,7 +250,7 @@ function merge( arena, player) {
  }
  
 function playerMove(dir) {
-    console.log(player.pos.x += dir);
+    
     player.pos.x += dir;
     if (collide (arena, player)) {
         player.pos.x -= dir;
