@@ -34,16 +34,16 @@ const matrix = [
 
 const matrix1 = [
 
-    [0, 0, 1],
-    [0, 0, 1],
-    [0, 1, 1],
+    [0, 0, 2],
+    [0, 0, 2],
+    [0, 2, 2],
     
 ];
 
 const matrix2 = [
 
     [0, 0, 0, 0],
-    [1, 1, 1, 1],
+    [3, 3, 3, 3],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     
@@ -51,57 +51,57 @@ const matrix2 = [
 
 const matrix3 = [
 
-    [0, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 0, 0]
+    [0, 4, 0, 0],
+    [0, 4, 0, 0],
+    [0, 4, 0, 0],
+    [0, 4, 0, 0]
     
 ];
 
 const matrix4 = [
 
-    [1, 0, 0],
-    [1, 0, 0],
-    [1, 1, 0],
+    [5, 0, 0],
+    [5, 0, 0],
+    [5, 5, 0],
     
 ];
 
 const matrix5 = [
 
-    [0, 0, 1],
-    [0, 1, 1],
-    [0, 1, 0],
+    [0, 0, 6],
+    [0, 6, 6],
+    [0, 6, 0],
     
 ];
 
 const matrix6 = [
 
-    [1, 0, 0],
-    [1, 1, 0],
-    [0, 1, 0],
+    [7, 0, 0],
+    [7, 7, 0],
+    [0, 7, 0],
     
 ];
 
 const matrix7 = [
 
     [0, 0, 0],
-    [0, 1, 1],
-    [1, 1, 0],
+    [0, 8, 8],
+    [8, 8, 0],
     
 ];
 
 const matrix8 = [
 
     [0, 0, 0],
-    [1, 1, 0],
-    [0, 1, 1],
+    [9, 9, 0],
+    [0, 9, 9],
     
 ];
 
 const matrix9 = [
 
-    [1, 1],
-    [1, 1],
+    [10, 10],
+    [10, 10],
 ]
 
 
@@ -147,14 +147,16 @@ function playerReset() {
 
 
 const colors = [
-    
+    null,
     'purple',
     'yellow',
     'orange',
     'blue',
     'pink',
     'green',
-    'red'
+    'red',
+    "aqua",
+    "gold"
   ];
 
 //   const randomColors = colors[Math.floor(Math.random() * colors.length)]
@@ -205,6 +207,7 @@ function drawMatrix(matrix, offset) {
 matrix.forEach((row, y) => {
     row.forEach((value, x) => {
         if (value !== 0) {
+            // console.log(colors[value])
             context.fillStyle = colors[value];
             context.fillRect(x + offset.x, y + offset.y, 1, 1);
         }
@@ -217,7 +220,7 @@ function merge( arena, player) {
     player.matrix.forEach((row, y) => {
      row.forEach((value, x) => {
          if (value !== 0) {
-             return arena[y + player.pos.y][x + player.pos.x] = value;
+             arena[y + player.pos.y][x + player.pos.x] = value;
             //  console.log(value)
 
          }
@@ -256,9 +259,18 @@ function playerMove(dir) {
 }
 
 function playerRotate(dir) {
-  
+    const position = player.pos.x;
+    let offset = 1;
     rotate(player.matrix, dir)
-   
+   while(collide(arena, player)) {
+       player.pos.x += offset;
+       offset = -(offset + (offset > 0 ? 1 : -1));
+       if(offset > player.matrix[0].length) {
+           rotate(player.matrix, -dir);
+           player.pos.x = position;
+           return;
+       }
+   }
 }
 
 
