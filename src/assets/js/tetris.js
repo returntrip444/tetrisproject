@@ -22,6 +22,8 @@ function arenaSweep() {
     }
 }
 
+// create player: name and replay and quit button which brings you back to mainpage when quit button is clicked
+
 
 
 const matrix = [
@@ -355,6 +357,7 @@ document.addEventListener('keydown', event => {
 
 });
 
-playerReset();
-updateScore();
-update();
+
+    playerReset();
+    updateScore();
+    update();
