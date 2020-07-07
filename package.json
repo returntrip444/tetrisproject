@@ -23,7 +23,7 @@
   },
   "engines": {
     "node": "10.16.0"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/returntrip444/tetrisproject#readme",
   "dependencies": {
+    "concurrently": "^5.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.22"
   }
