@@ -1,6 +1,7 @@
 #containerTetris {
     background-color: "skyblue";
     font-family: 'Press Start 2P', cursive;
+    
     /* height: 100vh;
     width: 100vw; */
 }
@@ -9,4 +10,9 @@
     font-family: 'Press Start 2P', cursive;
     /* height: 100vh;
     width: 100vw; */
+}
+
+#tetris {
+    height: 80px;
+    width: 70px;
 }
