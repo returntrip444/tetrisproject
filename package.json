@@ -5,13 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run kill && nodemon server.js",
-    "kill": "kill-port 3001"
+    "start": "node backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/returntrip444/tetrisproject.git"
   },
+  "engines": {
+    "node": "10.16.0"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
