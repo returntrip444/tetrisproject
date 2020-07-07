@@ -12,6 +12,13 @@
     width: 100vw; */
 }
 
+#high-scores {
+    position: absolute;
+    top: 50%;
+    left: 78%;
+    border: 1px solid black;
+}
+
 #tetris {
     height: 80px;
     width: 70px;
